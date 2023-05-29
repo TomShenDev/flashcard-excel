@@ -1,24 +1,75 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="mystyle.css">
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <script src="./scripts/create_flashcards.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.js"></script>
+
     <!--This part is for the main menu-->
     <div class="main-menu">
-        <button>New Flashcards Set</button>
-        <button>Load Flashcards Set</button>
-        <button>Settings</button>
+        <table>
+            <tr><td><div class="new-flash-cards-button">New Flashcards Set</div></td></tr>
+            <tr><td><div class="load-flash-cards-button">Load Flashcards Set</div></td></tr>
+            <tr><td><div class="settings-button">Settings</div></td></tr>
+        </table>
     </div>
 
     <!--This part is for creating new flashcards-->
-    <div class="create-flashcards">
+    <div class="new-flash-cards page">
+        <div>
+            Add your excel file here!
+            Please also indicate which columns are questions and answers
+        </div>
         <form class="upload-excel-file" onsubmit="return CreateFlashCard(event)">
             <input type="file" id="excelFile" name="excelFile" accept=".xls,.xlsx">
-            <input type="submit">
+            <input type="submit"><br/>
+            <label for="qquestion-col">Question column:</label>
+            <input type="number" id="question-col" name="question-col"><br/>
+            <label for="ans-col">Answer column:</label>
+            <input type="number" id="ans-col" name="ans-col"><br/>
         </form>
     </div>
+
+    <div class="load-flash-cards page">
+        loadFlashCardPage
+        <div class="back-to-menu-button">Back to Menu</div>
+    </div>
+
+    <div class="settings page">
+        settings
+        <div class="back-to-menu-button">Back to Menu</div>
+    </div>
+
+    <script>
+        let mainMenu = document.querySelector(".main-menu")
+        let newFlashCardPage = document.querySelector(".new-flash-cards")
+        let loadFlashCardPage = document.querySelector(".load-flash-cards")
+        let leafPages = document.querySelector(".page")
+        let settings = document.querySelector(".settings")
+        let button1 = document.querySelector(".new-flash-cards-button")
+        let button2 = document.querySelector(".load-flash-cards-button")
+        let button3 = document.querySelector(".settings-button")
+        let backMenuButtons = document.querySelectorAll(".back-to-menu-button")
+        button1.addEventListener('click', () => {
+            mainMenu.style.display = "none"
+            newFlashCardPage.style.display = "block"
+        })
+        button2.addEventListener('click', () => {
+            mainMenu.style.display = "none"
+            loadFlashCardPage.style.display = "block"
+        })
+        button3.addEventListener('click', () => {
+            mainMenu.style.display = "none"
+            settings.style.display = "block"
+        })
+        backMenuButtons.forEach(b => {
+            b.addEventListener('click', ()=>{
+                leafPages.forEach(p => p.style.display = "none")
+            })
+            mainMenu.style.display = "block"
+        })
+    </script>
 </body>
 </html>

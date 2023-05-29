@@ -1,5 +1,4 @@
 function CreateFlashCard(e){
-    e.preventDefault()
     console.log("Creating flashcard!")
     // read the first two row of the workbook
     var reader = new FileReader();
