@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="mystyle.css">
+</head>
+<body>
+    <script src="./scripts/create_flashcards.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.js"></script>
+    <!--This part is for the main menu-->
+    <div class="main-menu">
+        <button>New Flashcards Set</button>
+        <button>Load Flashcards Set</button>
+        <button>Settings</button>
+    </div>
+
+    <!--This part is for creating new flashcards-->
+    <div class="create-flashcards">
+        <form class="upload-excel-file" onsubmit="return CreateFlashCard(event)">
+            <input type="file" id="excelFile" name="excelFile" accept=".xls,.xlsx">
+            <input type="submit">
+        </form>
+    </div>
+</body>
+</html>
